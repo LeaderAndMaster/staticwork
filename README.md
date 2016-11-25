@@ -1,0 +1,2 @@
+# staticwork
+statick html project
