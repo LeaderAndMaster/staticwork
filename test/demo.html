@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .siblings * {
+        display: block;
+        border: 2px solid lightgrey;
+        color: lightgrey;
+        padding: 5px;
+        margin: 15px;
+    }
+</style>
+<body>
+
+<div style="width:500px;" class="siblings">
+    <ul>ul (父节点)
+        <li>li (类名为"star"的上一个兄弟节点)</li>
+        <li>li (类名为"star"的上一个兄弟节点)</li>
+        <li class="start">li (兄弟节点)</li>
+        <li>li (类名为"star"的下一个兄弟节点)</li>
+        <li>li (类名为"star"的下一个兄弟节点)</li>
+    </ul>
+</div>
+<p>在这个例子中,我们选择类名称为“star”的li元素的所有兄弟元素。</p>
+
+</body>
+<script>
+    var el = document.querySelector('li.start');
+    console.log(siblings(el));
+
+    /**
+     @param {string} Element
+     @return {Array}
+     */
+    function siblings(el) {
+        var arr = [].filter.call(el.parentNode.children, function (child) {
+            return child !== el;
+        });
+        return arr;
+    }
+    function closest(el, selector) {
+        const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+        while (el) {
+            if (matchesSelector.call(el, selector)) {
+                return el;
+            } else {
+                el = el.parentElement;
+            }
+        }
+        return null;
+    }
+
+</script>
+</html>

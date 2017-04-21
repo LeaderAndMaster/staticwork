@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页闪屏加载页面</title>
+</head>
+<body>
+<div class="percent">
+
+</div>
+<div class="mask">
+    正在加载。。。
+</div>
+</body>
+<!--<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>-->
+<script>
+    var percentE = document.getElementsByClassName('percent')[0];
+    var maskE = document.getElementsByClassName('mask')[0];
+    function loading() {
+        function Load() {
+        }
+
+        Load.prototype.loadImgs = function (urls, callback) {
+            this.urls = urls;
+            this.imgNumbers = urls.length;
+            this.loadImgNumbers = 0;
+            var that = this;
+            for (var i = 0; i < urls.length; i++) {
+                var obj = new Image();
+                obj.src = urls[i];
+                obj.onload = function () {
+                    that.loadImgNumbers++;
+                    callback(parseInt((that.loadImgNumbers / that.imgNumbers) * 100));
+                }
+            }
+        };
+
+        var loader = new Load();
+
+        loader.loadImgs([
+            // 将所有需要加载的图片地址写于此处
+            "https://iflytekliusheng.oss-cn-beijing.aliyuncs.com/static/kuyinPlane/img/1.jpg",
+            "https://iflytekliusheng.oss-cn-beijing.aliyuncs.com/static/kuyinPlane/img/2.jpg",
+            "https://iflytekliusheng.oss-cn-beijing.aliyuncs.com/static/images/ec38422ceecb3049bf40dfe8c22dad71.PNG?rt=1491444878333",
+            "https://iflytekliusheng.oss-cn-beijing.aliyuncs.com/static/image/preview/30adc9c16ca06b7106adf869cd30eb20.jpg"
+        ], function (percent) {
+            // 假设显示百分比的元素为 $(".percent")
+            console.log(percent);
+//            $(".percent").text(percent + '%');
+            percentE.innerHTML = percent + '%';
+            // 加载结束后，隐藏相应的 loading 或遮罩
+            if (percent == 100) {
+//                $(".mask").css('display', 'none');
+                maskE.style.display = 'none';
+            }
+        });
+    }
+
+    // 执行 loading 方法
+    loading();
+</script>
+
+</html>
