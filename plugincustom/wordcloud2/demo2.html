@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://liangbizhi.github.io/js2wordcloud/ -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Demo</title>
+    <style type="text/css">@-webkit-keyframes __wc_loading_animation__ {
+                               50% {
+                                   opacity: 0.3;
+                                   -webkit-transform: scale(0.4);
+                                   transform: scale(0.4);
+                               }
+
+                               100% {
+                                   opacity: 1;
+                                   -webkit-transform: scale(1);
+                                   transform: scale(1);
+                               }
+                           }
+
+    @keyframes __wc_loading_animation__ {
+        50% {
+            opacity: 0.3;
+            -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+        }
+
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+
+    .__wc_loading_wrapper__ {
+        display: table;
+        height: 100%;
+        width: 100%;
+    }
+
+    .__wc_loading_wrapper_item__ {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        position: relative;
+        padding-right: 60px;
+        line-height: 1.4;
+    }
+
+    .__wc_loading_wrapper_item_inner__ {
+        position: relative;
+        text-align: left;
+        display: inline-block;
+    }
+
+    .__wc_loading__ {
+        position: absolute;
+        top: 50%;
+        left: -40px;
+        margin-top: -6px;
+    }
+
+    .__wc_loading__ > div:nth-child(1) {
+        top: 15px;
+        left: 0;
+        -webkit-animation: __wc_loading_animation__ 1s 0s infinite linear;
+        animation: __wc_loading_animation__ 1s 0s infinite linear;
+    }
+
+    .__wc_loading__ > div:nth-child(2) {
+        top: 10.22726px;
+        left: 10.22726px;
+        -webkit-animation: __wc_loading_animation__ 1s 0.12s infinite linear;
+        animation: __wc_loading_animation__ 1s 0.12s infinite linear;
+    }
+
+    .__wc_loading__ > div:nth-child(3) {
+        top: 0;
+        left: 15px;
+        -webkit-animation: __wc_loading_animation__ 1s 0.24s infinite linear;
+        animation: __wc_loading_animation__ 1s 0.24s infinite linear;
+    }
+
+    .__wc_loading__ > div:nth-child(4) {
+        top: -10.22726px;
+        left: 10.22726px;
+        -webkit-animation: __wc_loading_animation__ 1s 0.36s infinite linear;
+        animation: __wc_loading_animation__ 1s 0.36s infinite linear;
+    }
+
+    .__wc_loading__ > div:nth-child(5) {
+        top: -15px;
+        left: 0;
+        -webkit-animation: __wc_loading_animation__ 1s 0.48s infinite linear;
+        animation: __wc_loading_animation__ 1s 0.48s infinite linear;
+    }
+
+    .__wc_loading__ > div:nth-child(6) {
+        top: -10.22726px;
+        left: -10.22726px;
+        -webkit-animation: __wc_loading_animation__ 1s 0.6s infinite linear;
+        animation: __wc_loading_animation__ 1s 0.6s infinite linear;
+    }
+
+    .__wc_loading__ > div:nth-child(7) {
+        top: 0;
+        left: -15px;
+        -webkit-animation: __wc_loading_animation__ 1s 0.72s infinite linear;
+        animation: __wc_loading_animation__ 1s 0.72s infinite linear;
+    }
+
+    .__wc_loading__ > div:nth-child(8) {
+        top: 10.22726px;
+        left: -10.22726px;
+        -webkit-animation: __wc_loading_animation__ 1s 0.84s infinite linear;
+        animation: __wc_loading_animation__ 1s 0.84s infinite linear;
+    }
+
+    .__wc_loading__ > div {
+        background-color: #d3d3d3;
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        margin: 2px;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        position: absolute;
+    }
+    </style>
+</head>
+<body>
+<h1>一般</h1>
+<div id="container" style="height: 400px;">
+    <div style="position: relative; width: 100%; height: inherit; cursor: pointer;">
+        <div style="text-align: center; color: rgb(136, 136, 136); font-size: 14px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; display: none; background-color: rgb(255, 0, 0);"></div>
+        <canvas width="1333" height="400"></canvas>
+        <div style="background-color: rgba(0, 0, 0, 0.701961); color: rgb(255, 255, 255); padding: 5px; border-radius: 5px; font-size: 12px; font-family: undefined; line-height: 1.4; transition: left 0.2s, top 0.2s; position: absolute; white-space: nowrap; z-index: 999; display: none; top: 273px; left: 518px;">
+            2: 价值¥50<br>词云图
+        </div>
+    </div>
+</div>
+<h1>无数据</h1>
+<div id="container1" style="height: 400px;">
+    <div style="position: relative; width: 100%; height: inherit;">
+        <div style="text-align: center; color: rgb(136, 136, 136); font-size: 14px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; display: none; background-color: rgb(238, 238, 238);"></div>
+        <canvas width="1333" height="400"></canvas>
+        <div style="background-color: rgba(0, 0, 0, 0.701961); color: rgb(255, 255, 255); padding: 5px; border-radius: 5px; font-size: 12px; font-family: undefined; line-height: 1.4; transition: left 0.2s, top 0.2s; position: absolute; white-space: nowrap; z-index: 999; display: none;"></div>
+    </div>
+</div>
+<script src="https://liangbizhi.github.io/js2wordcloud/dist/js2wordcloud.js"></script>
+<script>
+    var option = {
+        tooltip: {
+            show: true,
+            formatter: function (item) {
+                return item[0] + ': 价值¥' + item[1] + '<br>' + '词云图'
+            }
+        },
+        list: [['3', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 500000], ['2', 50], ['2', 40], ['2', 40], ['2', 30], ['2', 30], ['2', 20], ['2', 20], ['2', 1], ['2', 1], ['2', 20], ['2', 1], ['2', 1], ['2', 20], ['2', 1], ['2', 1], ['2', 20], ['2', 1], ['2', 1], ['2', 20], ['2', 1], ['2', 1], ['2', 20], ['2', 1], ['2', 1], ['2', 20], ['2', 1], ['2', 1], ['2', 20], ['2', 1], ['2', 1], ['2', 20], ['2', 1], ['2', 1]],
+//         list:[["玻璃瓶",941],["塑料瓶",15],["易拉罐",3]],
+//        list:getList('2','塑料瓶'),
+        color: '#15a4fa',
+        shape: 'circle',
+        ellipticity: 1,
+        imageShape:'taurus.png'
+    }
+    var wc = new Js2WordCloud(document.getElementById('container'))
+//    wc.showLoading({
+//        backgroundColor: '#fff',
+//        text: '看见了福建省的附件里是卡洛斯的家乐福就爱上了克拉家乐福及爱丽丝垃圾堆里发简历到复健科了会计师两地分居阿里拉客积分的垃圾费浪费据了解乐山大佛',
+//        effect: 'spin'
+//    })
+    setTimeout(function () {
+        wc.hideLoading()
+        wc.setOption(option)
+    }, 2000)
+
+//    setTimeout(function () {
+//        wc.setOption({
+//            noDataLoadingOption: {
+//                backgroundColor: '#f00',
+//                text: '暂无数据'
+//            }
+//        })
+//    }, 4000)
+//
+//    setTimeout(function () {
+//        wc.setOption(option)
+//    }, 6000)
+
+    /////////////////
+//    var option1 = {
+//        color: '#15a4fa',
+//        noDataLoadingOption: {
+//            backgroundColor: '#eee',
+//            text: '暂无数据',
+//            textStyle: {
+//                color: '#f00',
+//                fontSize: 20
+//            }
+//        }
+//    }
+//    var wc1 = new Js2WordCloud(document.getElementById('container1'))
+//    wc1.showLoading()
+//    setTimeout(function () {
+//        wc1.hideLoading()
+//        wc1.setOption(option1)
+//    }, 2000)
+
+//    var option8 = {
+//        tooltip: {
+//            show: true,
+//            formatter: function (item) {
+//                return item[0] + ': 价值¥' + item[1] + '<br>' + '词云图'
+//            }
+//        },
+//        list: [['华莱士', 500000], ['华莱士', 50], ['华莱士', 40], ['华莱士', 40], ['华莱士', 30], ['华莱士', 30], ['华莱士', 20], ['华莱士', 20], ['华莱士', 1], ['华莱士', 1]],
+//        color: 'red'
+//    }
+//    setTimeout(function () {
+//        wc1.setOption(option8)
+//    }, 4000)
+
+//    window.onresize = function () {
+//        wc.resize()
+//        wc1.resize()
+//    }
+    function getList(text1,text2) {
+        var result = [];
+        for (var i = 0; i < 1; i++) {
+            result.push([text1, 30]);
+        }
+        for (var i = 0; i < 30; i++) {
+            result.push(["♥", (Math.random() * 100).toFixed(0) % 15]);
+        }
+        for (var i = 0; i < 3; i++) {
+            result.push([text2, Math.max(15, (Math.random() * 100).toFixed(0) % 25)]);
+        }
+        for (var i = 0; i < 100; i++) {
+            result.push(["♡", (Math.random() * 100).toFixed(0) % 15]);
+        }
+        for (var i = 0; i < 200; i++) {
+            result.push(["❁", (Math.random() * 100).toFixed(0) % 5]);
+        }
+        return result;
+    }
+</script>
+
+</body>
+</html>

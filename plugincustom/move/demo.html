@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wraper {
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+            position: absolute;
+        }
+
+        .img {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wraper">
+    <img id="img" class="img" src="http://in.iflytek.com/Upload/bdab6ea1-ed20-40d5-9771-8efc91efdadb.JPG" alt="">
+
+</div>
+</body>
+<script>
+    var params = {left: 0, top: 0, currentX: 0, currentY: 0, drag: false};
+    var img = document.getElementById('img'), drag = false, wrapper = document.getElementsByClassName('wraper')[0];
+    if (getCss(img, "left") !== "auto") {
+        params.left = getCss(img, "left")
+    }
+    if (getCss(img, "top") !== "auto") {
+        params.top = getCss(img, "top")
+    }
+    img.onmousedown = function (c) {
+        params.flag = true;
+        if (!c) {
+            c = window.event;//防止IE文字选中
+            a.onselectstart = function () {
+                return false;
+            }
+        }
+        var d = c;
+        params.currentX = d.clientX;
+        params.currentY = d.clientY;
+        console.log('图片点击' + params);
+    };
+    document.onmouseout = function () {
+        params.flag = false;
+        if (getCss(img, "left") !== "auto") {
+            params.left = getCss(img, "left")
+        }
+        if (getCss(img, "top") !== "auto") {
+            params.top = getCss(img, "top")
+        }
+
+    }
+    document.onmouseover = function () {
+        console.log('over');
+    }
+    document.onmousedown = function (c) {
+        params.drag = true;
+        if (!c) {
+            c = window.event;
+            a.onselectstart = function () {
+                return false;
+            }
+        }
+        var d = c;
+        params.currentX = d.clientX;
+        params.currentY = d.clientY;
+    };
+    document.onmousemove = function (h) {
+        var i = h ? h : window.event;
+        if (params.flag) {
+            var d = i.clientX, c = i.clientY;
+            var g = d - params.currentX, f = c - params.currentY;
+            img.style.left = parseInt(params.left) + g + "px";
+            img.style.top = parseInt(params.top) + f + "px";
+        }
+    }
+    /*
+     获取相关CSS属性
+     firefox:getComputedStyle
+     ie:currentStyle
+     */
+    function getCss(b, a) {
+        return b.currentStyle ? b.currentStyle[a] : document.defaultView.getComputedStyle(b, false)[a];
+    }
+</script>
+</html>

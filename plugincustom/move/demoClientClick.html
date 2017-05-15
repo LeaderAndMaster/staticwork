@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="img" class="img" src="http://in.iflytek.com/Upload/bdab6ea1-ed20-40d5-9771-8efc91efdadb.JPG" alt="">
+
+</body>
+<script>
+var img=document.getElementById('#img');
+    img.click=function (e) {
+        console.log('clientX:'+e.clientX+'clientY'+e.clientY+e.clientLeft);
+    }
+</script>
+</html>

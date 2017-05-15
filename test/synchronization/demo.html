@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1"><h2>使用 jQuery AJAX 修改文本内容</h2></div>
+<button>获取其他内容</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "https://api.iflyresearch.com/v2/dt/groupData?appid=zbime&pIndex=7&sort=1&pSize=10&appid=zbime",
+            success: function (result) {
+                var total = JSON.parse(result.data.total);
+                $("#div1").html(total);
+            }
+        });
+        var i, t = Date.now();
+        for (i = 0; i < 1000000000; i++) {
+        }
+        var difference = Date.now() - t;
+
+        function fn() {
+            $("#div1").html(Date.now() - t);
+        }
+
+        setTimeout(fn, 500)
+        console.log(difference);
+        $("#div1").html(difference);
+    });
+</script>
+</html>
