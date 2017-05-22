@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="init()">
+
+
+<div id="block1" onMouseOut="drag=0" onMouseOver=""
+     style="height: 60px; left: 200px; position: absolute; top: 200px; width: 120px">
+
+    <dd><img id="target" alt border="0" src="http://in.iflytek.com/Upload/bdab6ea1-ed20-40d5-9771-8efc91efdadb.JPG"
+             width="300px">
+    </dd>
+</div>
+</body>
+<script>
+    var drag = 0;
+    var move = 0;
+    var dragObj;
+    var img = document.getElementById('block1');
+    img.onmouseout = function () {
+        drag = 0;
+    }
+    img.onmouseover = function () {
+        dragObj = this;
+        drag = 1;
+    }
+    function init() {
+        console.log('init');
+        window.document.onmousemove = mouseMove;
+        window.document.onmousedown = mouseDown;
+        window.document.onmouseup = mouseUp;
+        window.document.ondragstart = mouseStop;
+    }
+    function mouseDown() {
+        if (drag) {
+            clickleft = window.event.x - parseInt(dragObj.style.left)
+            clicktop = window.event.y - parseInt(dragObj.style.top)
+            dragObj.style.zIndex += 1
+            move = 1
+        }
+    }
+    function mouseStop() {
+        window.event.returnValue = false
+    }
+    function mouseMove() {
+        if (move) {
+            dragObj.style.left = window.event.x - clickleft
+            dragObj.style.top = window.event.y - clicktop
+        }
+    }
+    function mouseUp() {
+        move = 0
+    }
+</script>
+</html>

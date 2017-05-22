@@ -22,7 +22,9 @@
         color: 'random-light',
         backgroundColor: '#000',
         rotateRatio: 0.2,
-        ellipticity: 1
+        ellipticity: 1,
+        figPath: 'D:\\data\\chromemm.png',
+        shape: 'triangle'
     }
     var option = {
         list: data = [
@@ -84,10 +86,12 @@
             result.push(["❁", (Math.random() * 100).toFixed(0) % 5]);
         }
 
-        options.shape = eval(shape + "Shape()")
+//        options.shape = eval(shape + "Shape()")
 
         options.list = result;
-        WordCloud($canvas[0], options);
+//        WordCloud($canvas[0], options);
+        letterCloud($canvas[0], word = "逗比")
+
         $canvas[0].addEventListener("wordcloudstop", function () {
             var url = $canvas[0].toDataURL();
             $("#image").attr("src", url);
@@ -95,7 +99,7 @@
 //                saveImage(url)
         })
     }
-    drawShape('吕宏旺', 'dddd', 'star');
+    drawShape('鸭鸭', '我爱你', 'star');
     //        console.log(can);
     //        WordCloud(can, option);
 </script>
